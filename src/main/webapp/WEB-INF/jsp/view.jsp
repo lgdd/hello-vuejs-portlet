@@ -1,8 +1,5 @@
-<%@ page import="com.liferay.portal.kernel.util.Constants" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
-<%@ taglib prefix="liferay-portlet" uri="http://liferay.com/tld/portlet" %>
 <%@ taglib prefix="portlet" uri="http://java.sun.com/portlet" %>
-<%@ taglib prefix="liferay-ui" uri="http://liferay.com/tld/ui" %>
 
 <portlet:defineObjects/>
 <portlet:resourceURL var="saveMessageURL"/>
