@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.lgdd</groupId>
@@ -19,6 +20,32 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>com.samaxes.maven</groupId>
+                <artifactId>minify-maven-plugin</artifactId>
+                <version>1.7.6</version>
+                <executions>
+                    <execution>
+                        <id>default-minify</id>
+                        <configuration>
+                            <charset>UTF-8</charset>
+                            <webappSourceDir>${project.basedir}/src/main/resources</webappSourceDir>
+                            <webappTargetDir>${project.basedir}/src/main/webapp</webappTargetDir>
+                            <jsSourceIncludes>
+                                <jsSourceInclude>**/*.js</jsSourceInclude>
+                            </jsSourceIncludes>
+                            <jsEngine>CLOSURE</jsEngine>
+                        </configuration>
+                        <goals>
+                            <goal>minify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <skipMerge>true</skipMerge>
+                    <nosuffix>true</nosuffix>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>com.liferay.maven.plugins</groupId>
                 <artifactId>liferay-maven-plugin</artifactId>
                 <version>${liferay.maven.plugin.version}</version>
@@ -33,7 +60,8 @@
                 <configuration>
                     <autoDeployDir>${liferay.auto.deploy.dir}</autoDeployDir>
                     <appServerDeployDir>${liferay.app.server.deploy.dir}</appServerDeployDir>
-                    <appServerLibGlobalDir>${liferay.app.server.lib.global.dir}</appServerLibGlobalDir>
+                    <appServerLibGlobalDir>${liferay.app.server.lib.global.dir}
+                    </appServerLibGlobalDir>
                     <appServerPortalDir>${liferay.app.server.portal.dir}</appServerPortalDir>
                     <liferayVersion>${liferay.version}</liferayVersion>
                     <pluginType>portlet</pluginType>
